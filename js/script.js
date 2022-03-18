@@ -320,4 +320,4 @@ function getWords(){
 }
 
 
-
+// Need to add letter to arrays again when deselecting from individual sections
