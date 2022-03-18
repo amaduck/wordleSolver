@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Wordle solver</title>
+		<link rel = "stylesheet" type="text/css" href="styles/styles.css">
+		<script type="text/javascript" src="js/script.js"></script>
+	</head>
+	<body>
+		<form name="WordleSolver">
+			<div id="formDiv">
+				<div id="knownDiv" onclick="updateK()">
+					<fieldset>
+						<span>Enter any letters of known position here:</span><br>
+						<input type="text" id="letter1" maxlength="1" size="1" value="" >
+						<input type="text" id="letter2" maxlength="1" size="1" value="" >
+						<input type="text" id="letter3" maxlength="1" size="1" value="" >
+						<input type="text" id="letter4" maxlength="1" size="1" value="" >
+						<input type="text" id="letter5" maxlength="1" size="1" value="" >
+					</fieldset>
+				</div>
+				<div id="otherLetters" onclick="updateOtherKnown()">
+					<fieldset>
+						<span>Select any letters which you know appear, but don't know where</span><br>
+						<button type="button" class="unSelectedButton" id="otherA" onclick="changeSelectionClass(otherA.id)" value="A">A</button>
+						<button type="button" class="unSelectedButton" id="otherB" onclick="changeSelectionClass(otherB.id)" value="B">B</button>
+						<button type="button" class="unSelectedButton" id="otherC" onclick="changeSelectionClass(otherC.id)" value="C">C</button>
+						<button type="button" class="unSelectedButton" id="otherD" onclick="changeSelectionClass(otherD.id)" value="D">D</button>
+						<button type="button" class="unSelectedButton" id="otherE" onclick="changeSelectionClass(otherE.id)" value="E">E</button>
+						<button type="button" class="unSelectedButton" id="otherF" onclick="changeSelectionClass(otherF.id)" value="F">F</button>
+						<button type="button" class="unSelectedButton" id="otherG" onclick="changeSelectionClass(otherG.id)" value="G">G</button>
+						<button type="button" class="unSelectedButton" id="otherH" onclick="changeSelectionClass(otherH.id)" value="H">H</button>
+						<button type="button" class="unSelectedButton" id="otherI" onclick="changeSelectionClass(otherI.id)" value="I">I</button>
+						<button type="button" class="unSelectedButton" id="otherJ" onclick="changeSelectionClass(otherJ.id)" value="J">J</button>
+						<button type="button" class="unSelectedButton" id="otherK" onclick="changeSelectionClass(otherK.id)" value="K">K</button>
+						<button type="button" class="unSelectedButton" id="otherL" onclick="changeSelectionClass(otherL.id)" value="L">L</button>
+						<button type="button" class="unSelectedButton" id="otherM" onclick="changeSelectionClass(otherM.id)" value="M">M</button>
+						<button type="button" class="unSelectedButton" id="otherN" onclick="changeSelectionClass(otherN.id)" value="N">N</button>
+						<button type="button" class="unSelectedButton" id="otherO" onclick="changeSelectionClass(otherO.id)" value="O">O</button>
+						<button type="button" class="unSelectedButton" id="otherP" onclick="changeSelectionClass(otherP.id)" value="P">P</button>
+						<button type="button" class="unSelectedButton" id="otherQ" onclick="changeSelectionClass(otherQ.id)" value="Q">Q</button>
+						<button type="button" class="unSelectedButton" id="otherR" onclick="changeSelectionClass(otherR.id)" value="R">R</button>
+						<button type="button" class="unSelectedButton" id="otherS" onclick="changeSelectionClass(otherS.id)" value="S">S</button>
+						<button type="button" class="unSelectedButton" id="otherT" onclick="changeSelectionClass(otherT.id)" value="T">T</button>
+						<button type="button" class="unSelectedButton" id="otherU" onclick="changeSelectionClass(otherU.id)" value="U">U</button>
+						<button type="button" class="unSelectedButton" id="otherV" onclick="changeSelectionClass(otherV.id)" value="V">V</button>
+						<button type="button" class="unSelectedButton" id="otherW" onclick="changeSelectionClass(otherW.id)" value="W">W</button>
+						<button type="button" class="unSelectedButton" id="otherX" onclick="changeSelectionClass(otherX.id)" value="X">X</button>
+						<button type="button" class="unSelectedButton" id="otherY" onclick="changeSelectionClass(otherY.id)" value="Y">Y</button>
+						<button type="button" class="unSelectedButton" id="otherZ" onclick="changeSelectionClass(otherZ.id)" value="Z">Z</button>
+
+						<!--
+						<button type="button" class="unSelectedButton" id="otherB" onclick="changeSelectionClass(otherB.id)">B</button>
+						<button type="button" class="unSelectedButton" id="otherC" onclick="changeSelectionClass(otherC.id)">C</button>
+						<button type="button" class="unSelectedButton" id="otherD" onclick="changeSelectionClass(otherD.id)">D</button>
+						<button type="button" class="unSelectedButton" id="otherE" onclick="changeSelectionClass(otherE.id)">E</button>
+						<button type="button" class="unSelectedButton" id="otherF" onclick="changeSelectionClass(otherF.id)">F</button>
+						<button type="button" class="unSelectedButton" id="otherG" onclick="changeSelectionClass(otherG.id)">G</button>
+						<button type="button" class="unSelectedButton" id="otherH" onclick="changeSelectionClass(otherH.id)">H</button>
+						<button type="button" class="unSelectedButton" id="otherI" onclick="changeSelectionClass(otherI.id)">I</button>
+						<button type="button" class="unSelectedButton" id="otherJ" onclick="changeSelectionClass(otherJ.id)">J</button>
+						<button type="button" class="unSelectedButton" id="otherK" onclick="changeSelectionClass(otherK.id)">K</button>
+						<button type="button" class="unSelectedButton" id="otherL" onclick="changeSelectionClass(otherL.id)">L</button>
+						<button type="button" class="unSelectedButton" id="otherM" onclick="changeSelectionClass(otherM.id)">M</button>
+						<button type="button" class="unSelectedButton" id="otherN" onclick="changeSelectionClass(otherN.id)">N</button>
+						<button type="button" class="unSelectedButton" id="otherO" onclick="changeSelectionClass(otherO.id)">O</button>
+						<button type="button" class="unSelectedButton" id="otherP" onclick="changeSelectionClass(otherP.id)">P</button>
+						<button type="button" class="unSelectedButton" id="otherQ" onclick="changeSelectionClass(otherQ.id)">Q</button>
+						<button type="button" class="unSelectedButton" id="otherR" onclick="changeSelectionClass(otherR.id)">R</button>
+						<button type="button" class="unSelectedButton" id="otherS" onclick="changeSelectionClass(otherS.id)">S</button>
+						<button type="button" class="unSelectedButton" id="otherT" onclick="changeSelectionClass(otherT.id)">T</button>
+						<button type="button" class="unSelectedButton" id="otherU" onclick="changeSelectionClass(otherU.id)">U</button>
+						<button type="button" class="unSelectedButton" id="otherV" onclick="changeSelectionClass(otherV.id)">V</button>
+						<button type="button" class="unSelectedButton" id="otherW" onclick="changeSelectionClass(otherW.id)">W</button>
+						<button type="button" class="unSelectedButton" id="otherX" onclick="changeSelectionClass(otherX.id)">X</button>
+						<button type="button" class="unSelectedButton" id="otherY" onclick="changeSelectionClass(otherY.id)">Y</button>
+						<button type="button" class="unSelectedButton" id="otherZ" onclick="changeSelectionClass(otherZ.id)">Z</button>
+						-->
+					</fieldset>
+				</div>
+				<div id="generalUnavailable" onclick="updateGeneralUnavailable()">
+					<fieldset>
+						<span>Select any letters which you know don't appear anywhere in the word</span><br>
+						<button type="button" class="unSelectedButton" id="unavailableA" onclick="changeSelectionClass(unavailableA.id)" value="A">A</button>
+						<button type="button" class="unSelectedButton" id="unavailableB" onclick="changeSelectionClass(unavailableB.id)" value="B">B</button>
+						<button type="button" class="unSelectedButton" id="unavailableC" onclick="changeSelectionClass(unavailableC.id)" value="C">C</button>
+						<button type="button" class="unSelectedButton" id="unavailableD" onclick="changeSelectionClass(unavailableD.id)" value="D">D</button>
+						<button type="button" class="unSelectedButton" id="unavailableE" onclick="changeSelectionClass(unavailableE.id)" value="E">E</button>
+						<button type="button" class="unSelectedButton" id="unavailableF" onclick="changeSelectionClass(unavailableF.id)" value="F">F</button>
+						<button type="button" class="unSelectedButton" id="unavailableG" onclick="changeSelectionClass(unavailableG.id)" value="G">G</button>
+						<button type="button" class="unSelectedButton" id="unavailableH" onclick="changeSelectionClass(unavailableH.id)" value="H">H</button>
+						<button type="button" class="unSelectedButton" id="unavailableI" onclick="changeSelectionClass(unavailableI.id)" value="I">I</button>
+						<button type="button" class="unSelectedButton" id="unavailableJ" onclick="changeSelectionClass(unavailableJ.id)" value="J">J</button>
+						<button type="button" class="unSelectedButton" id="unavailableK" onclick="changeSelectionClass(unavailableK.id)" value="K">K</button>
+						<button type="button" class="unSelectedButton" id="unavailableL" onclick="changeSelectionClass(unavailableL.id)" value="L">L</button>
+						<button type="button" class="unSelectedButton" id="unavailableM" onclick="changeSelectionClass(unavailableM.id)" value="M">M</button>
+						<button type="button" class="unSelectedButton" id="unavailableN" onclick="changeSelectionClass(unavailableN.id)" value="N">N</button>
+						<button type="button" class="unSelectedButton" id="unavailableO" onclick="changeSelectionClass(unavailableO.id)" value="O">O</button>
+						<button type="button" class="unSelectedButton" id="unavailableP" onclick="changeSelectionClass(unavailableP.id)" value="P">P</button>
+						<button type="button" class="unSelectedButton" id="unavailableQ" onclick="changeSelectionClass(unavailableQ.id)" value="Q">Q</button>
+						<button type="button" class="unSelectedButton" id="unavailableR" onclick="changeSelectionClass(unavailableR.id)" value="R">R</button>
+						<button type="button" class="unSelectedButton" id="unavailableS" onclick="changeSelectionClass(unavailableS.id)" value="S">S</button>
+						<button type="button" class="unSelectedButton" id="unavailableT" onclick="changeSelectionClass(unavailableT.id)" value="T">T</button>
+						<button type="button" class="unSelectedButton" id="unavailableU" onclick="changeSelectionClass(unavailableU.id)" value="U">U</button>
+						<button type="button" class="unSelectedButton" id="unavailableV" onclick="changeSelectionClass(unavailableV.id)" value="V">V</button>
+						<button type="button" class="unSelectedButton" id="unavailableW" onclick="changeSelectionClass(unavailableW.id)" value="W">W</button>
+						<button type="button" class="unSelectedButton" id="unavailableX" onclick="changeSelectionClass(unavailableX.id)" value="X">X</button>
+						<button type="button" class="unSelectedButton" id="unavailableY" onclick="changeSelectionClass(unavailableY.id)" value="Y">Y</button>
+						<button type="button" class="unSelectedButton" id="unavailableZ" onclick="changeSelectionClass(unavailableZ.id)" value="Z">Z</button>
+						<br>
+						<button type="button" id="unavailableAll" onclick="selectAllUnavailable()" value="all">Select all</button>
+					</fieldset>
+				</div>
+				<div id="specificUnavailable">
+					<div id="unavailable1" class="letterCol">
+						<fieldset>
+							<span>Select any letters which you know don't appear in the first letter</span><br>
+							<button type="button" class="unSelectedButton" id="unavailable1_A" onclick="changeSelectionClass(unavailable1_A.id)" value="A">A</button>
+							<button type="button" class="unSelectedButton" id="unavailable1_B" onclick="changeSelectionClass(unavailable1_B.id)" value="B">B</button>
+							<button type="button" class="unSelectedButton" id="unavailable1_C" onclick="changeSelectionClass(unavailable1_C.id)" value="C">C</button>
+							<button type="button" class="unSelectedButton" id="unavailable1_D" onclick="changeSelectionClass(unavailable1_D.id)" value="D">D</button>
+							<button type="button" class="unSelectedButton" id="unavailable1_E" onclick="changeSelectionClass(unavailable1_E.id)" value="E">E</button>
+							<button type="button" class="unSelectedButton" id="unavailable1_F" onclick="changeSelectionClass(unavailable1_F.id)" value="F">F</button>
+							<button type="button" class="unSelectedButton" id="unavailable1_G" onclick="changeSelectionClass(unavailable1_G.id)" value="G">G</button>
+							<button type="button" class="unSelectedButton" id="unavailable1_H" onclick="changeSelectionClass(unavailable1_H.id)" value="H">H</button>
+							<button type="button" class="unSelectedButton" id="unavailable1_I" onclick="changeSelectionClass(unavailable1_I.id)" value="I">I</button>
+							<button type="button" class="unSelectedButton" id="unavailable1_J" onclick="changeSelectionClass(unavailable1_J.id)" value="J">J</button>
+							<button type="button" class="unSelectedButton" id="unavailable1_K" onclick="changeSelectionClass(unavailable1_K.id)" value="K">K</button>
+							<button type="button" class="unSelectedButton" id="unavailable1_L" onclick="changeSelectionClass(unavailable1_L.id)" value="L">L</button>
+							<button type="button" class="unSelectedButton" id="unavailable1_M" onclick="changeSelectionClass(unavailable1_M.id)" value="M">M</button>
+							<button type="button" class="unSelectedButton" id="unavailable1_N" onclick="changeSelectionClass(unavailable1_N.id)" value="N">N</button>
+							<button type="button" class="unSelectedButton" id="unavailable1_O" onclick="changeSelectionClass(unavailable1_O.id)" value="O">O</button>
+							<button type="button" class="unSelectedButton" id="unavailable1_P" onclick="changeSelectionClass(unavailable1_P.id)" value="P">P</button>
+							<button type="button" class="unSelectedButton" id="unavailable1_Q" onclick="changeSelectionClass(unavailable1_Q.id)" value="Q">Q</button>
+							<button type="button" class="unSelectedButton" id="unavailable1_R" onclick="changeSelectionClass(unavailable1_R.id)" value="R">R</button>
+							<button type="button" class="unSelectedButton" id="unavailable1_S" onclick="changeSelectionClass(unavailable1_S.id)" value="S">S</button>
+							<button type="button" class="unSelectedButton" id="unavailable1_T" onclick="changeSelectionClass(unavailable1_T.id)" value="T">T</button>
+							<button type="button" class="unSelectedButton" id="unavailable1_U" onclick="changeSelectionClass(unavailable1_U.id)" value="U">U</button>
+							<button type="button" class="unSelectedButton" id="unavailable1_V" onclick="changeSelectionClass(unavailable1_V.id)" value="V">V</button>
+							<button type="button" class="unSelectedButton" id="unavailable1_W" onclick="changeSelectionClass(unavailable1_W.id)" value="W">W</button>
+							<button type="button" class="unSelectedButton" id="unavailable1_X" onclick="changeSelectionClass(unavailable1_X.id)" value="X">X</button>
+							<button type="button" class="unSelectedButton" id="unavailable1_Y" onclick="changeSelectionClass(unavailable1_Y.id)" value="Y">Y</button>
+							<button type="button" class="unSelectedButton" id="unavailable1_Z" onclick="changeSelectionClass(unavailable1_Z.id)" value="Z">Z</button>
+						</fieldset>
+					</div>
+					<div id="unavailable2" class="letterCol">
+						<fieldset>
+							<span>Select any letters which you know don't appear in the second letter</span><br>
+							<button type="button" class="unSelectedButton" id="unavailable2_A" onclick="changeSelectionClass(unavailable2_A.id)" value="A">A</button>
+							<button type="button" class="unSelectedButton" id="unavailable2_B" onclick="changeSelectionClass(unavailable2_B.id)" value="B">B</button>
+							<button type="button" class="unSelectedButton" id="unavailable2_C" onclick="changeSelectionClass(unavailable2_C.id)" value="C">C</button>
+							<button type="button" class="unSelectedButton" id="unavailable2_D" onclick="changeSelectionClass(unavailable2_D.id)" value="D">D</button>
+							<button type="button" class="unSelectedButton" id="unavailable2_E" onclick="changeSelectionClass(unavailable2_E.id)" value="E">E</button>
+							<button type="button" class="unSelectedButton" id="unavailable2_F" onclick="changeSelectionClass(unavailable2_F.id)" value="F">F</button>
+							<button type="button" class="unSelectedButton" id="unavailable2_G" onclick="changeSelectionClass(unavailable2_G.id)" value="G">G</button>
+							<button type="button" class="unSelectedButton" id="unavailable2_H" onclick="changeSelectionClass(unavailable2_H.id)" value="H">H</button>
+							<button type="button" class="unSelectedButton" id="unavailable2_I" onclick="changeSelectionClass(unavailable2_I.id)" value="I">I</button>
+							<button type="button" class="unSelectedButton" id="unavailable2_J" onclick="changeSelectionClass(unavailable2_J.id)" value="J">J</button>
+							<button type="button" class="unSelectedButton" id="unavailable2_K" onclick="changeSelectionClass(unavailable2_K.id)" value="K">K</button>
+							<button type="button" class="unSelectedButton" id="unavailable2_L" onclick="changeSelectionClass(unavailable2_L.id)" value="L">L</button>
+							<button type="button" class="unSelectedButton" id="unavailable2_M" onclick="changeSelectionClass(unavailable2_M.id)" value="M">M</button>
+							<button type="button" class="unSelectedButton" id="unavailable2_N" onclick="changeSelectionClass(unavailable2_N.id)" value="N">N</button>
+							<button type="button" class="unSelectedButton" id="unavailable2_O" onclick="changeSelectionClass(unavailable2_O.id)" value="O">O</button>
+							<button type="button" class="unSelectedButton" id="unavailable2_P" onclick="changeSelectionClass(unavailable2_P.id)" value="P">P</button>
+							<button type="button" class="unSelectedButton" id="unavailable2_Q" onclick="changeSelectionClass(unavailable2_Q.id)" value="Q">Q</button>
+							<button type="button" class="unSelectedButton" id="unavailable2_R" onclick="changeSelectionClass(unavailable2_R.id)" value="R">R</button>
+							<button type="button" class="unSelectedButton" id="unavailable2_S" onclick="changeSelectionClass(unavailable2_S.id)" value="S">S</button>
+							<button type="button" class="unSelectedButton" id="unavailable2_T" onclick="changeSelectionClass(unavailable2_T.id)" value="T">T</button>
+							<button type="button" class="unSelectedButton" id="unavailable2_U" onclick="changeSelectionClass(unavailable2_U.id)" value="U">U</button>
+							<button type="button" class="unSelectedButton" id="unavailable2_V" onclick="changeSelectionClass(unavailable2_V.id)" value="V">V</button>
+							<button type="button" class="unSelectedButton" id="unavailable2_W" onclick="changeSelectionClass(unavailable2_W.id)" value="W">W</button>
+							<button type="button" class="unSelectedButton" id="unavailable2_X" onclick="changeSelectionClass(unavailable2_X.id)" value="X">X</button>
+							<button type="button" class="unSelectedButton" id="unavailable2_Y" onclick="changeSelectionClass(unavailable2_Y.id)" value="Y">Y</button>
+							<button type="button" class="unSelectedButton" id="unavailable2_Z" onclick="changeSelectionClass(unavailable2_Z.id)" value="Z">Z</button>
+						</fieldset>
+					</div>
+					<div id="unavailable3" class="letterCol">
+						<fieldset>
+							<span>Select any letters which you know don't appear in the third letter</span><br>
+							<button type="button" class="unSelectedButton" id="unavailable3_A" onclick="changeSelectionClass(unavailable3_A.id)" value="A">A</button>
+							<button type="button" class="unSelectedButton" id="unavailable3_B" onclick="changeSelectionClass(unavailable3_B.id)" value="B">B</button>
+							<button type="button" class="unSelectedButton" id="unavailable3_C" onclick="changeSelectionClass(unavailable3_C.id)" value="C">C</button>
+							<button type="button" class="unSelectedButton" id="unavailable3_D" onclick="changeSelectionClass(unavailable3_D.id)" value="D">D</button>
+							<button type="button" class="unSelectedButton" id="unavailable3_E" onclick="changeSelectionClass(unavailable3_E.id)" value="E">E</button>
+							<button type="button" class="unSelectedButton" id="unavailable3_F" onclick="changeSelectionClass(unavailable3_F.id)" value="F">F</button>
+							<button type="button" class="unSelectedButton" id="unavailable3_G" onclick="changeSelectionClass(unavailable3_G.id)" value="G">G</button>
+							<button type="button" class="unSelectedButton" id="unavailable3_H" onclick="changeSelectionClass(unavailable3_H.id)" value="H">H</button>
+							<button type="button" class="unSelectedButton" id="unavailable3_I" onclick="changeSelectionClass(unavailable3_I.id)" value="I">I</button>
+							<button type="button" class="unSelectedButton" id="unavailable3_J" onclick="changeSelectionClass(unavailable3_J.id)" value="J">J</button>
+							<button type="button" class="unSelectedButton" id="unavailable3_K" onclick="changeSelectionClass(unavailable3_K.id)" value="K">K</button>
+							<button type="button" class="unSelectedButton" id="unavailable3_L" onclick="changeSelectionClass(unavailable3_L.id)" value="L">L</button>
+							<button type="button" class="unSelectedButton" id="unavailable3_M" onclick="changeSelectionClass(unavailable3_M.id)" value="M">M</button>
+							<button type="button" class="unSelectedButton" id="unavailable3_N" onclick="changeSelectionClass(unavailable3_N.id)" value="N">N</button>
+							<button type="button" class="unSelectedButton" id="unavailable3_O" onclick="changeSelectionClass(unavailable3_O.id)" value="O">O</button>
+							<button type="button" class="unSelectedButton" id="unavailable3_P" onclick="changeSelectionClass(unavailable3_P.id)" value="P">P</button>
+							<button type="button" class="unSelectedButton" id="unavailable3_Q" onclick="changeSelectionClass(unavailable3_Q.id)" value="Q">Q</button>
+							<button type="button" class="unSelectedButton" id="unavailable3_R" onclick="changeSelectionClass(unavailable3_R.id)" value="R">R</button>
+							<button type="button" class="unSelectedButton" id="unavailable3_S" onclick="changeSelectionClass(unavailable3_S.id)" value="S">S</button>
+							<button type="button" class="unSelectedButton" id="unavailable3_T" onclick="changeSelectionClass(unavailable3_T.id)" value="T">T</button>
+							<button type="button" class="unSelectedButton" id="unavailable3_U" onclick="changeSelectionClass(unavailable3_U.id)" value="U">U</button>
+							<button type="button" class="unSelectedButton" id="unavailable3_V" onclick="changeSelectionClass(unavailable3_V.id)" value="V">V</button>
+							<button type="button" class="unSelectedButton" id="unavailable3_W" onclick="changeSelectionClass(unavailable3_W.id)" value="W">W</button>
+							<button type="button" class="unSelectedButton" id="unavailable3_X" onclick="changeSelectionClass(unavailable3_X.id)" value="X">X</button>
+							<button type="button" class="unSelectedButton" id="unavailable3_Y" onclick="changeSelectionClass(unavailable3_Y.id)" value="Y">Y</button>
+							<button type="button" class="unSelectedButton" id="unavailable3_Z" onclick="changeSelectionClass(unavailable3_Z.id)" value="Z">Z</button>
+						</fieldset>
+					</div>
+					<div id="unavailable4" class="letterCol">
+						<fieldset>
+							<span>Select any letters which you know don't appear in the fourth letter</span><br>
+							<button type="button" class="unSelectedButton" id="unavailable4_A" onclick="changeSelectionClass(unavailable4_A.id)" value="A">A</button>
+							<button type="button" class="unSelectedButton" id="unavailable4_B" onclick="changeSelectionClass(unavailable4_B.id)" value="B">B</button>
+							<button type="button" class="unSelectedButton" id="unavailable4_C" onclick="changeSelectionClass(unavailable4_C.id)" value="C">C</button>
+							<button type="button" class="unSelectedButton" id="unavailable4_D" onclick="changeSelectionClass(unavailable4_D.id)" value="D">D</button>
+							<button type="button" class="unSelectedButton" id="unavailable4_E" onclick="changeSelectionClass(unavailable4_E.id)" value="E">E</button>
+							<button type="button" class="unSelectedButton" id="unavailable4_F" onclick="changeSelectionClass(unavailable4_F.id)" value="F">F</button>
+							<button type="button" class="unSelectedButton" id="unavailable4_G" onclick="changeSelectionClass(unavailable4_G.id)" value="G">G</button>
+							<button type="button" class="unSelectedButton" id="unavailable4_H" onclick="changeSelectionClass(unavailable4_H.id)" value="H">H</button>
+							<button type="button" class="unSelectedButton" id="unavailable4_I" onclick="changeSelectionClass(unavailable4_I.id)" value="I">I</button>
+							<button type="button" class="unSelectedButton" id="unavailable4_J" onclick="changeSelectionClass(unavailable4_J.id)" value="J">J</button>
+							<button type="button" class="unSelectedButton" id="unavailable4_K" onclick="changeSelectionClass(unavailable4_K.id)" value="K">K</button>
+							<button type="button" class="unSelectedButton" id="unavailable4_L" onclick="changeSelectionClass(unavailable4_L.id)" value="L">L</button>
+							<button type="button" class="unSelectedButton" id="unavailable4_M" onclick="changeSelectionClass(unavailable4_M.id)" value="M">M</button>
+							<button type="button" class="unSelectedButton" id="unavailable4_N" onclick="changeSelectionClass(unavailable4_N.id)" value="N">N</button>
+							<button type="button" class="unSelectedButton" id="unavailable4_O" onclick="changeSelectionClass(unavailable4_O.id)" value="O">O</button>
+							<button type="button" class="unSelectedButton" id="unavailable4_P" onclick="changeSelectionClass(unavailable4_P.id)" value="P">P</button>
+							<button type="button" class="unSelectedButton" id="unavailable4_Q" onclick="changeSelectionClass(unavailable4_Q.id)" value="Q">Q</button>
+							<button type="button" class="unSelectedButton" id="unavailable4_R" onclick="changeSelectionClass(unavailable4_R.id)" value="R">R</button>
+							<button type="button" class="unSelectedButton" id="unavailable4_S" onclick="changeSelectionClass(unavailable4_S.id)" value="S">S</button>
+							<button type="button" class="unSelectedButton" id="unavailable4_T" onclick="changeSelectionClass(unavailable4_T.id)" value="T">T</button>
+							<button type="button" class="unSelectedButton" id="unavailable4_U" onclick="changeSelectionClass(unavailable4_U.id)" value="U">U</button>
+							<button type="button" class="unSelectedButton" id="unavailable4_V" onclick="changeSelectionClass(unavailable4_V.id)" value="V">V</button>
+							<button type="button" class="unSelectedButton" id="unavailable4_W" onclick="changeSelectionClass(unavailable4_W.id)" value="W">W</button>
+							<button type="button" class="unSelectedButton" id="unavailable4_X" onclick="changeSelectionClass(unavailable4_X.id)" value="X">X</button>
+							<button type="button" class="unSelectedButton" id="unavailable4_Y" onclick="changeSelectionClass(unavailable4_Y.id)" value="Y">Y</button>
+							<button type="button" class="unSelectedButton" id="unavailable4_Z" onclick="changeSelectionClass(unavailable4_Z.id)" value="Z">Z</button>
+						</fieldset>
+					</div>
+					<div id="unavailable5" class="letterCol">
+						<fieldset>
+							<span>Select any letters which you know don't appear in the fifth letter</span><br>
+							<button type="button" class="unSelectedButton" id="unavailable5_A" onclick="changeSelectionClass(unavailable5_A.id)" value="A">A</button>
+							<button type="button" class="unSelectedButton" id="unavailable5_B" onclick="changeSelectionClass(unavailable5_B.id)" value="B">B</button>
+							<button type="button" class="unSelectedButton" id="unavailable5_C" onclick="changeSelectionClass(unavailable5_C.id)" value="C">C</button>
+							<button type="button" class="unSelectedButton" id="unavailable5_D" onclick="changeSelectionClass(unavailable5_D.id)" value="D">D</button>
+							<button type="button" class="unSelectedButton" id="unavailable5_E" onclick="changeSelectionClass(unavailable5_E.id)" value="E">E</button>
+							<button type="button" class="unSelectedButton" id="unavailable5_F" onclick="changeSelectionClass(unavailable5_F.id)" value="F">F</button>
+							<button type="button" class="unSelectedButton" id="unavailable5_G" onclick="changeSelectionClass(unavailable5_G.id)" value="G">G</button>
+							<button type="button" class="unSelectedButton" id="unavailable5_H" onclick="changeSelectionClass(unavailable5_H.id)" value="H">H</button>
+							<button type="button" class="unSelectedButton" id="unavailable5_I" onclick="changeSelectionClass(unavailable5_I.id)" value="I">I</button>
+							<button type="button" class="unSelectedButton" id="unavailable5_J" onclick="changeSelectionClass(unavailable5_J.id)" value="J">J</button>
+							<button type="button" class="unSelectedButton" id="unavailable5_K" onclick="changeSelectionClass(unavailable5_K.id)" value="K">K</button>
+							<button type="button" class="unSelectedButton" id="unavailable5_L" onclick="changeSelectionClass(unavailable5_L.id)" value="L">L</button>
+							<button type="button" class="unSelectedButton" id="unavailable5_M" onclick="changeSelectionClass(unavailable5_M.id)" value="M">M</button>
+							<button type="button" class="unSelectedButton" id="unavailable5_N" onclick="changeSelectionClass(unavailable5_N.id)" value="N">N</button>
+							<button type="button" class="unSelectedButton" id="unavailable5_O" onclick="changeSelectionClass(unavailable5_O.id)" value="O">O</button>
+							<button type="button" class="unSelectedButton" id="unavailable5_P" onclick="changeSelectionClass(unavailable5_P.id)" value="P">P</button>
+							<button type="button" class="unSelectedButton" id="unavailable5_Q" onclick="changeSelectionClass(unavailable5_Q.id)" value="Q">Q</button>
+							<button type="button" class="unSelectedButton" id="unavailable5_R" onclick="changeSelectionClass(unavailable5_R.id)" value="R">R</button>
+							<button type="button" class="unSelectedButton" id="unavailable5_S" onclick="changeSelectionClass(unavailable5_S.id)" value="S">S</button>
+							<button type="button" class="unSelectedButton" id="unavailable5_T" onclick="changeSelectionClass(unavailable5_T.id)" value="T">T</button>
+							<button type="button" class="unSelectedButton" id="unavailable5_U" onclick="changeSelectionClass(unavailable5_U.id)" value="U">U</button>
+							<button type="button" class="unSelectedButton" id="unavailable5_V" onclick="changeSelectionClass(unavailable5_V.id)" value="V">V</button>
+							<button type="button" class="unSelectedButton" id="unavailable5_W" onclick="changeSelectionClass(unavailable5_W.id)" value="W">W</button>
+							<button type="button" class="unSelectedButton" id="unavailable5_X" onclick="changeSelectionClass(unavailable5_X.id)" value="X">X</button>
+							<button type="button" class="unSelectedButton" id="unavailable5_Y" onclick="changeSelectionClass(unavailable5_Y.id)" value="Y">Y</button>
+							<button type="button" class="unSelectedButton" id="unavailable5_Z" onclick="changeSelectionClass(unavailable5_Z.id)" value="Z">Z</button>
+						</fieldset>
+					</div>
+				</div>
+				<div id ="buttons">
+					<fieldset>
+						<button type="button" id="submitButton" onclick="submitF()">Submit</button>
+						<button type="button" id="clearButton" onclick="clearF()">Clear</button>
+					</fieldset>
+				</div>
+				<div id="results">
+					<fieldset>
+						<span id="possibleWords"></span>
+					</fieldset>
+				</div>
+			</div>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,68 @@
+body
+	{
+	background-color:black;
+	text-align: center;
+	margin: auto;
+	}
+	
+*
+	{
+	font-family: "Arial", sans-serif;
+	color:white;
+	}
+	
+form	
+	{
+	width:60%;
+	}
+
+input
+	{
+	color:black;		
+	}
+	
+button
+	{
+	color:yellow;
+	background-color:green;
+	}	
+.selectedButton
+	{
+	color:pink;
+	background-color:grey;
+	}
+
+.unSelectedButton
+	{
+	color:yellow;
+	background-color:black;
+	}
+
+#knownDiv
+	{
+	text-align: center;
+	margin: auto;
+	}
+
+
+#otherLetters .selectedButton
+	{
+	color:pink;
+	background-color:green;
+	}
+
+#otherLetters .unSelectedButton
+	{
+	color:yellow;
+	background-color:black;
+	}
+		
+.letterCol{
+	float:left;
+	width:20%;
+}
+
+table, th, td
+	{
+	border:1px solid white;
+	}
