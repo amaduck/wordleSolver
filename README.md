@@ -14,3 +14,6 @@ Webpage has 6 sections:
 6) Results section
 
 Each letter has an associated array of potential letters. Code works by checking all potential combinations, first again the array of necessary letters, then against the dictionary
+
+Issues:
+Removing a letter from the individual array, then making a change at the generally unavailable array loses the change to individual
