@@ -1,7 +1,7 @@
 # wordleSolver
 Wordle solver in HTML / javascript
 
-An exercise to remember how to use javascript, and to learn to use gitHub
+An exercise to remember how to write javascript, and to learn to use gitHub
 
 An inelegant solution to begin - aims to present all possible solutions to the various wordle-esque games, based on given information
 
