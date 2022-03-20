@@ -16,6 +16,6 @@ Webpage has 6 sections:
 Each letter has an associated array of potential letters. Code works by checking all potential combinations, first again the array of necessary letters, then against the dictionary
 
 Issues:
-Removing a letter from the individual array, then making a change at the generally unavailable array loses the change to individual
-Removing a letter from individual array doesn't affect solutions - if available at general level will appear as option
-Need to add onblur to capitalise letters after changing
+- Removing a letter from the individual array, then making a change at the generally unavailable array loses the change to individual
+- Removing a letter from individual array doesn't affect solutions - if available at general level will appear as option
+- Need to add onblur to capitalise letters after changing
